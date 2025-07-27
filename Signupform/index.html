@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+</head>
+<body>
+
+    <section class="form1">
+
+        <form action="/submit-form" method="post">
+            <fieldset>
+                <legend>Sign Up</legend>
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required autocomplete="name">
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" name="email" required autocomplete="email">
+                <label for="telephone">Telephone</label>
+                <input type="tel" id="telephone" name="telephone" required autocomplete="tel">
+
+                <label for="bootcamp">Bootcamp Selection</label>
+                <select id="bootcamp" name="bootcamp" required>
+                    <option value="">Please Select</option>
+                    <option value="web">Web Development</option>
+                    <option value="app">App Development</option>
+                    <option value="data">Data Science</option>
+                </select>
+
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+
+
+    </section>
+    
+</body>
+</html>

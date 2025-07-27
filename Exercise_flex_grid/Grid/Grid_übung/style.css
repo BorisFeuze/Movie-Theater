@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header-1 {
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.pictures-all {
+    width: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minimax(10rem, 15rem)) ;
+}
