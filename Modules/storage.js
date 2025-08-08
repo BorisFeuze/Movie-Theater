@@ -1,13 +1,38 @@
+// localStorage.clear();
+
 const getStoredMovies = () => {
   return JSON.parse(localStorage.getItem("storedMovies")) || [];
 };
 
 const addMovie = (param) => {
-  const selectedMovie = { id: param.id, name: param.name };
-  // console.log(e.target.parentElement);
-  console.log(param.id);
+  const { id, title } = param;
+
   const storedMovies = getStoredMovies();
-  const updatedStoredMovies = [...storedMovies, selectedMovie];
+
+  let updatedStoredMovies = [];
+
+  const isInStoredMovie = storedMovies.some((selectedMovie) => {
+    return selectedMovie.id === id;
+  });
+  console.log(isInStoredMovie);
+
+  if (isInStoredMovie) {
+    updatedStoredMovies = storedMovies.map((selectedMovie) => {
+      if (selectedMovie.id === id) {
+        return { ...selectedMovie, quantity: selectedMovie.quantity + 1 };
+      } else {
+        return selectedMovie;
+      }
+    });
+  } else {
+    const updatedSelectedMovie = { id, title, quantity: 1 };
+    updatedStoredMovies = [...storedMovies, updatedSelectedMovie];
+  }
+
+  // console.log(e.target.parentElement);
+  // console.log(param.id);
+  // const storedMovies = getStoredMovies();
+  // const updatedStoredMovies = [...storedMovies, selectedMovie];
 
   localStorage.setItem("storedMovies", JSON.stringify(updatedStoredMovies));
 };
