@@ -9,6 +9,9 @@ const options = {
 
 const movieCont = document.querySelector("#movie-container");
 // *   **Display Data**: Populate the DOM with the fetched movie data as styled cards. Show us the name, image and type. The grid is already set up in the HTML file.
+const getStoredMovies = () => {
+  return JSON.parse(localStorage.getItem("storedMovies")) || [];
+};
 
 const renderMovieCard = (param, container) => {
   const imgCode = "https://image.tmdb.org/t/p/w500";
@@ -33,10 +36,25 @@ const renderMovieCard = (param, container) => {
   movieInfo.className = "text-gray-600";
   movieCard.appendChild(movieInfo);
 
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Add";
+  deleteBtn.className =
+    "mt-5 px-4 py-2 bg-green-500 hover:bg-green-400 text-white rounded";
+  deleteBtn.addEventListener("click", () => {
+    const selectedMovie = { id: param.id, name: param.name };
+    // console.log(e.target.parentElement);
+    console.log(param.id);
+    const storedMovies = getStoredMovies();
+    const updatedStoredMovies = [...storedMovies, selectedMovie];
+
+    localStorage.setItem("storedMovies", JSON.stringify(updatedStoredMovies));
+    // localStorage.clear();
+  });
+
   container.appendChild(movieCard);
 };
 
-const fetchmovies = async (params) => {
+const fetchMovies = async (params) => {
   const resp = await fetch(
     "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
     options
@@ -53,7 +71,7 @@ const fetchmovies = async (params) => {
 
 const fetchAndRendermovies = async () => {
   try {
-    const { results } = await fetchmovies();
+    const { results } = await fetchMovies();
 
     const movies = { results };
     console.log(movies);
