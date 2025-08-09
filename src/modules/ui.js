@@ -49,8 +49,6 @@ const renderFavouriteMovieCard = (param, container) => {
   saveBtn.className =
     " px-2 pb-1 mt-2 bg-black hover:bg-red-400 text-white rounded";
   saveBtn.addEventListener("click", (event) => {
-    console.log("test");
-
     const inputValue = document
       .querySelector(`#userInput-${param.id}`)
       .value.trim();
@@ -59,9 +57,9 @@ const renderFavouriteMovieCard = (param, container) => {
       alert("Cannot save an empty comment");
       return;
     }
-    extraInfoMovie(param, inputValue, event);
+    extraInfoMovie(param, inputValue);
     // localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-    event.target.reset();
+    document.querySelector(`#userInput-${param.id}`).value = "";
   });
 
   userComment.appendChild(saveBtn);

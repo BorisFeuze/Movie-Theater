@@ -11,9 +11,6 @@ const fetchAndRendermovies = async () => {
     const { results } = await fetchMovies();
 
     const movies = { results };
-    console.log(movies);
-
-    console.log(movies.results);
 
     movies.results?.forEach?.((movieObj) => {
       renderMovieCard(movieObj, movieCont);
