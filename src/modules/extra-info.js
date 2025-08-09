@@ -1,6 +1,6 @@
 import { getStoredMovies } from "../../modules/storage.js";
 
-const extraInfoMovie = (param, info) => {
+const extraInfoMovie = (param, info, event) => {
   const storedMovies = getStoredMovies();
 
   let updatedStoredMovies = [];
@@ -13,7 +13,7 @@ const extraInfoMovie = (param, info) => {
   if (isInStoredMovie) {
     updatedStoredMovies = storedMovies.map((selectedMovie) => {
       if (selectedMovie.infos === param.infos) {
-        return { ...selectedMovie, infos: info };
+        return { ...selectedMovie, infos: (selectedMovie.infos = info) };
       } else {
         return selectedMovie;
       }
@@ -29,6 +29,7 @@ const extraInfoMovie = (param, info) => {
   // const updatedStoredMovies = [...storedMovies, selectedMovie];
 
   localStorage.setItem("storedMovies", JSON.stringify(updatedStoredMovies));
+  event.target.reset();
 };
 
 export { extraInfoMovie };

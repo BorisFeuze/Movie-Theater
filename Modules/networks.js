@@ -17,7 +17,7 @@ const fetchMovies = async (params) => {
 
   const data = await resp.json();
 
-  console.log(data);
+  // console.log(data);
 
   return data;
 };

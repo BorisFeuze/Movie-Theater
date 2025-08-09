@@ -1,3 +1,4 @@
+import { extraInfoMovie } from "./extra-info.js";
 import { removeMovie } from "./removeFavourite.js";
 
 const renderFavouriteMovieCard = (param, container) => {
@@ -29,6 +30,42 @@ const renderFavouriteMovieCard = (param, container) => {
   movieInfo.textContent = `ID: ${param.id} | Release date: ${param.release_date}`;
   movieInfo.className = "text-gray-600";
   movieCard.appendChild(movieInfo);
+
+  const userComment = document.createElement("div");
+  userComment.className = "bg-white p-1 ";
+  const label = document.createElement("p");
+  label.className = "text-sm mt-2 font-bold ";
+  label.textContent = "Comments";
+  userComment.appendChild(label);
+
+  const inputElement = document.createElement("input");
+  inputElement.className = "border p-2 w-full rounded-sm";
+  inputElement.setAttribute("id", `userInput-${param.id}`);
+  inputElement.setAttribute("type", "text");
+  inputElement.setAttribute("placeholder", "Enter a comment");
+  userComment.appendChild(inputElement);
+  const saveBtn = document.createElement("button");
+  saveBtn.textContent = "Save";
+  saveBtn.className =
+    " px-2 pb-1 mt-2 bg-black hover:bg-red-400 text-white rounded";
+  saveBtn.addEventListener("click", (event) => {
+    console.log("test");
+
+    const inputValue = document
+      .querySelector(`#userInput-${param.id}`)
+      .value.trim();
+    // *   Make sure the input is not empty before saving!
+    if (!inputValue) {
+      alert("Cannot save an empty comment");
+      return;
+    }
+    extraInfoMovie(param, inputValue, event);
+    // localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    event.target.reset();
+  });
+
+  userComment.appendChild(saveBtn);
+  movieCard.appendChild(userComment);
 
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "Delete";
