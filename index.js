@@ -1,6 +1,6 @@
-import { fetchMovies } from "./Modules/networks.js";
-import { getStoredMovies } from "./Modules/storage.js";
-import { renderMovieCard } from "./Modules/ui.js";
+import { fetchMovies } from "./modules/networks.js";
+import { getStoredMovies } from "./modules/storage.js";
+import { renderMovieCard } from "./modules/ui.js";
 
 const movieCont = document.querySelector("#movie-container");
 // *   **Display Data**: Populate the DOM with the fetched movie data as styled cards. Show us the name, image and type. The grid is already set up in the HTML file.
@@ -24,3 +24,5 @@ const fetchAndRendermovies = async () => {
 };
 
 fetchAndRendermovies();
+
+export { fetchAndRendermovies };

@@ -1,31 +1,25 @@
-// localStorage.clear();
+import { getStoredMovies } from "../../modules/storage.js";
 
-const getStoredMovies = () => {
-  return JSON.parse(localStorage.getItem("storedMovies")) || [];
-};
-
-const addMovie = (param) => {
-  const { id, title } = param;
-
+const extraInfoMovie = (param, info) => {
   const storedMovies = getStoredMovies();
 
   let updatedStoredMovies = [];
 
   const isInStoredMovie = storedMovies.some((selectedMovie) => {
-    return selectedMovie.id === id;
+    return selectedMovie.infos === param.infos;
   });
   console.log(isInStoredMovie);
 
   if (isInStoredMovie) {
     updatedStoredMovies = storedMovies.map((selectedMovie) => {
-      if (selectedMovie.id === id) {
-        return { ...selectedMovie, quantity: selectedMovie.quantity + 1 };
+      if (selectedMovie.infos === param.infos) {
+        return { ...selectedMovie, infos: info };
       } else {
         return selectedMovie;
       }
     });
   } else {
-    const updatedSelectedMovie = { id, title, quantity: 1 };
+    const updatedSelectedMovie = { ...param, infos: info };
     updatedStoredMovies = [...storedMovies, updatedSelectedMovie];
   }
 
@@ -37,4 +31,4 @@ const addMovie = (param) => {
   localStorage.setItem("storedMovies", JSON.stringify(updatedStoredMovies));
 };
 
-export { getStoredMovies, addMovie };
+export { extraInfoMovie };
