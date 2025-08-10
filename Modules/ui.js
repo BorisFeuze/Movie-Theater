@@ -33,7 +33,7 @@ const renderMovieCard = (param, container) => {
   const addFavoriteBtn = document.createElement("button");
   addFavoriteBtn.textContent = "Add to Favourites";
   addFavoriteBtn.className =
-    "mt-5 px-4 py-2 bg-green-500 hover:bg-green-400 text-white rounded";
+    "mt-5 px-4 py-2 bg-green-500 hover:bg-green-400 active:bg-green-300 text-white rounded";
   addFavoriteBtn.addEventListener("click", () => {
     addMovie(param);
   });

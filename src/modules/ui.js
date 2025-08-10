@@ -47,7 +47,7 @@ const renderFavouriteMovieCard = (param, container) => {
   const saveBtn = document.createElement("button");
   saveBtn.textContent = "Save";
   saveBtn.className =
-    " px-2 pb-1 mt-2 bg-black hover:bg-red-400 text-white rounded";
+    " px-2 pb-1 mt-2 bg-black hover:bg-green-400 active:bg-green-300 text-white rounded";
   saveBtn.addEventListener("click", (event) => {
     const inputValue = document
       .querySelector(`#userInput-${param.id}`)
@@ -68,7 +68,7 @@ const renderFavouriteMovieCard = (param, container) => {
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "Delete";
   deleteBtn.className =
-    "mt-5 px-4 py-2 bg-red-500 hover:bg-red-400 text-white rounded";
+    "mt-5 px-4 py-2 bg-red-500 hover:bg-red-400 active:bg-red-300 text-white rounded";
   deleteBtn.addEventListener("click", (event) => {
     // console.log(event.target.parentElement);
     removeMovie(param);
