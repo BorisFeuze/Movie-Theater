@@ -6,11 +6,58 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Movie theater</title>
   </head>
-  <body>
-    <header>
-      <ul class="nav-list">
-        <li class="nav-item"><a href="index.html">Home</a></li>
-        <li class="nav-item"><a href="src/journal.html">Journal</a></li>
+  <body class="bg-black font-sans">
+    
+    <header class="flex p-[1rem] gap-[4rem]  justify-center bg-[#121212]">
+
+      <!--Logo on the top-left-->
+      <div class="bg-[#F5C518] rounded-lg font-[900] flex justify-center items-center">
+        <p class="p-1 text-[1.2rem]">MOVIE||THEATER</p>
+      </div>
+
+      <!--search bar with button for search function-->
+      <div class="flex items-center bg-white rounded-lg w-full max-w-[40rem] px-2 py-1 gap-2">
+        <!-- <textarea
+          id="searchInput"
+          rows="1"
+          class="flex-1 resize-none overflow-hidden text-sm focus:outline-none leading-normal px-2 placeholder:text-gray-400 "
+          placeholder="Search Movie...">
+        </textarea> -->
+        <input
+  id="searchInput"
+  type="search"
+  placeholder="Search Movie..."
+  class="flex-1 text-sm focus:outline-none leading-normal px-2 placeholder:text-gray-400"
+/>
+
+        <button id="searchBtn" type="button" class="p-1 text-gray-500 hover:text-black">
+        <svg xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke-width="1.5"
+         stroke="currentColor"
+         class="w-5 h-5">
+        <path stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+        </button>
+      </div>
+
+      <!--menu subitems-->
+      <ul class="flex gap-[3rem] items-center">
+        <li>
+        <a href="index.html"
+        class="inline-block text-white no-underline bg-transparent px-3 py-1 transition duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,3)]">
+        Home
+        </a>
+        </li>
+        <li>
+        <a href="src/journal.html" 
+        class="inline-block text-white no-underline bg-transparent px-3 py-1 transition duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,3)]">
+        Journal
+        </a>
+        </li>
       </ul>
     </header>
     <main>

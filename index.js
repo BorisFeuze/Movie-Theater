@@ -26,3 +26,46 @@ const fetchAndRendermovies = async () => {
 fetchAndRendermovies();
 
 export { fetchAndRendermovies };
+
+//Search function - Eventlistner for button and enter
+
+
+import { searchMovies } from "./Modules/networks.js";
+
+// Debounce function
+function debounce(fn, delay) {
+  let timeoutId;
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
+const searchInput = document.getElementById('searchInput');
+
+const handleSearch = async (event) => {
+  const query = searchInput.value.trim();
+
+  if (query === "") {
+    removeMovies();
+    fetchAndRendermovies();
+    return;
+  }
+
+  const movies = await searchMovies(query);
+
+  if (!movies?.results?.length) return;
+
+  removeMovies();
+  movies.results.forEach((movie) => {
+    renderMovieCard(movie, movieCont);
+  });
+};
+
+// Wrap handleSearch with debounce of 150ms
+searchInput.addEventListener('input', debounce(handleSearch, 300));
+
+function removeMovies() {
+  const container = movieCont;
+  container.innerHTML = ""; // removes ALL child elements
+}
