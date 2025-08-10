@@ -11,9 +11,6 @@ const fetchAndRendermovies = async () => {
     const { results } = await fetchMovies();
 
     const movies = { results };
-    console.log(movies);
-
-    console.log(movies.results);
 
     movies.results?.forEach?.((movieObj) => {
       renderMovieCard(movieObj, movieCont);
@@ -29,19 +26,18 @@ export { fetchAndRendermovies };
 
 //Search function - Eventlistner for button and enter
 
-
-import { searchMovies } from "./Modules/networks.js";
+import { searchMovies } from "./modules/networks.js";
 
 // Debounce function
 function debounce(fn, delay) {
   let timeoutId;
-  return function(...args) {
+  return function (...args) {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => fn.apply(this, args), delay);
   };
 }
 
-const searchInput = document.getElementById('searchInput');
+const searchInput = document.getElementById("searchInput");
 
 const handleSearch = async (event) => {
   const query = searchInput.value.trim();
@@ -63,7 +59,7 @@ const handleSearch = async (event) => {
 };
 
 // Wrap handleSearch with debounce of 150ms
-searchInput.addEventListener('input', debounce(handleSearch, 300));
+searchInput.addEventListener("input", debounce(handleSearch, 300));
 
 function removeMovies() {
   const container = movieCont;
