@@ -5,7 +5,7 @@ const getStoredMovies = () => {
 };
 
 const addMovie = (param) => {
-  const { id, title } = param;
+  const { id } = param;
 
   const storedMovies = getStoredMovies();
 
@@ -25,7 +25,7 @@ const addMovie = (param) => {
       }
     });
   } else {
-    const updatedSelectedMovie = { id, title, quantity: 1 };
+    const updatedSelectedMovie = { ...param, quantity: 1 };
     updatedStoredMovies = [...storedMovies, updatedSelectedMovie];
   }
 
