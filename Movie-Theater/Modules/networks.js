@@ -17,9 +17,30 @@ const fetchMovies = async (params) => {
 
   const data = await resp.json();
 
-  console.log(data);
+  // console.log(data);
 
   return data;
 };
 
 export { fetchMovies };
+
+
+//fetch for search function
+
+export const searchMovies = async (search) => {
+
+    const url = `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`;
+
+    try {
+
+      const response = await fetch(url, options);
+      const data = await response.json();
+
+
+    return data;
+
+    } catch (error) {
+      console.error("Error", error)
+      return [];
+    }
+};
