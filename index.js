@@ -37,7 +37,7 @@ function debounce(fn, delay) {
   };
 }
 
-const searchInput = document.getElementById("searchInput");
+const searchInput = document.querySelector("#searchInput");
 
 const handleSearch = async (event) => {
   const query = searchInput.value.trim();
