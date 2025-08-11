@@ -4,7 +4,7 @@ const renderMovieCard = (param, container) => {
   const imgCode = "https://image.tmdb.org/t/p/w500";
   const movieCard = document.createElement("div");
   movieCard.className =
-    "bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-end text-center";
+    "bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center";
 
   const movieImageDiv = document.createElement("div");
   const movieInfoDiv = document.createElement("div");
@@ -33,7 +33,7 @@ const renderMovieCard = (param, container) => {
   const addFavoriteBtn = document.createElement("button");
   addFavoriteBtn.textContent = "Add to Favourites";
   addFavoriteBtn.className =
-    "mt-5 px-4 py-2 bg-green-500 hover:bg-green-400 active:bg-green-300 text-white rounded";
+    "px-4 py-2 bg-green-500 hover:bg-green-400 active:bg-green-300 text-white rounded mt-auto";
   addFavoriteBtn.addEventListener("click", () => {
     addMovie(param);
   });
