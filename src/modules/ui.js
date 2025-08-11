@@ -57,7 +57,7 @@ const renderFavouriteMovieCard = (param, container) => {
       alert("Cannot save an empty comment");
       return;
     }
-    extraInfoMovie(param, inputValue);
+    extraInfoMovie(inputValue);
     // localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     document.querySelector(`#userInput-${param.id}`).value = "";
   });
