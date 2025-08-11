@@ -7,7 +7,9 @@
     <title>Movie theater</title>
   </head>
   <body class="bg-black font-sans">
-    <header class="flex p-[1rem] gap-[4rem] justify-center bg-[#121212]">
+    <header
+      class="flex p-[1rem] gap-[4rem] justify-center bg-[#121212] w-full py-[2rem] fixed"
+    >
       <!--Logo on the top-left-->
       <div
         class="bg-[#F5C518] rounded-lg font-[900] flex justify-center items-center"
@@ -54,7 +56,7 @@
         </button>
       </div>
       <!--menu subitems-->
-      <ul class="flex gap-[3rem] items-center">
+      <ul class="flex gap-[3rem] items-center font-semibold">
         <li>
           <a
             href="index.html"
@@ -73,10 +75,10 @@
         </li>
       </ul>
     </header>
-    <main>
+    <main class="pt-[6rem]">
       <section>
         <div class="container mx-auto p-4">
-          <h1 class="text-3xl font-bold mb-4">Movies</h1>
+          <h1 class="text-3xl font-bold mb-4 text-white">Movies</h1>
           <div
             id="movie-container"
             class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4"
