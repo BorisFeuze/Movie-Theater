@@ -1,4 +1,4 @@
-import { fetchMovies } from "./modules/networks.js";
+import { fetchMovies } from "./Modules/networks.js";
 import { getStoredMovies } from "./modules/storage.js";
 import { renderMovieCard } from "./modules/ui.js";
 
@@ -26,7 +26,7 @@ export { fetchAndRendermovies };
 
 //Search function - Eventlistner for button and enter
 
-import { searchMovies } from "./modules/networks.js";
+import { searchMovies } from "./Modules/networks.js";
 
 // Debounce function
 function debounce(fn, delay) {
