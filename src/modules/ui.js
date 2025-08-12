@@ -5,7 +5,7 @@ const renderFavouriteMovieCard = (param, container) => {
   const imgCode = "https://image.tmdb.org/t/p/w500";
   const movieCard = document.createElement("div");
   movieCard.className =
-    "bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-end text-center";
+    "bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center";
 
   const movieImageDiv = document.createElement("div");
   const movieInfoDiv = document.createElement("div");
@@ -23,7 +23,7 @@ const renderFavouriteMovieCard = (param, container) => {
   const movieName = document.createElement("h2");
   movieName.textContent =
     param.title.charAt(0).toUpperCase() + param.title.slice(1);
-  movieName.className = "text-xl font-bold mb-2";
+  movieName.className = "text-xl font-bold";
   movieCard.appendChild(movieName);
 
   const movieInfo = document.createElement("p");
@@ -32,14 +32,15 @@ const renderFavouriteMovieCard = (param, container) => {
   movieCard.appendChild(movieInfo);
 
   const userComment = document.createElement("div");
-  userComment.className = "bg-white p-1 ";
+  userComment.className = "bg-white p-1 flex flex-col items-center justify-end h-full";
   const label = document.createElement("p");
   label.className = "text-sm mt-2 font-bold ";
   label.textContent = "Comments";
   userComment.appendChild(label);
 
+
   const inputElement = document.createElement("input");
-  inputElement.className = "border p-2 w-full rounded-sm";
+  inputElement.className = "border p-2 w-full rounded-sm mb-2";
   inputElement.setAttribute("id", `userInput-${param.id}`);
   inputElement.setAttribute("type", "text");
   inputElement.setAttribute("placeholder", "Enter a comment");
@@ -47,7 +48,7 @@ const renderFavouriteMovieCard = (param, container) => {
   const saveBtn = document.createElement("button");
   saveBtn.textContent = "Save";
   saveBtn.className =
-    " px-2 pb-1 mt-2 bg-black hover:bg-red-400 text-white rounded";
+    "mb-2 px-2 pb-1 bg-black hover:bg-green-400 active:bg-green-300 text-white rounded";
   saveBtn.addEventListener("click", (event) => {
     const inputValue = document
       .querySelector(`#userInput-${param.id}`)
@@ -57,7 +58,7 @@ const renderFavouriteMovieCard = (param, container) => {
       alert("Cannot save an empty comment");
       return;
     }
-    extraInfoMovie(param, inputValue);
+    extraInfoMovie(inputValue);
     // localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     document.querySelector(`#userInput-${param.id}`).value = "";
   });
@@ -68,7 +69,7 @@ const renderFavouriteMovieCard = (param, container) => {
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "Delete";
   deleteBtn.className =
-    "mt-5 px-4 py-2 bg-red-500 hover:bg-red-400 text-white rounded";
+    "px-4 py-2 bg-red-500 hover:bg-red-400 active:bg-red-300 text-white rounded mt-auto";
   deleteBtn.addEventListener("click", (event) => {
     // console.log(event.target.parentElement);
     removeMovie(param);
