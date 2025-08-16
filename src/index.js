@@ -1,6 +1,7 @@
-import { fetchMovies } from "./Modules/networks.js";
+import { fetchMovies } from "./modules/networks.js";
 import { getStoredMovies } from "./modules/storage.js";
-import { renderMovieCard } from "./modules/ui.js";
+import { renderMovieCard } from "./modules/homeUi.js";
+import { searchMovies } from "./modules/networks.js";
 
 const movieCont = document.querySelector("#movie-container");
 // *   **Display Data**: Populate the DOM with the fetched movie data as styled cards. Show us the name, image and type. The grid is already set up in the HTML file.
@@ -25,8 +26,6 @@ fetchAndRendermovies();
 export { fetchAndRendermovies };
 
 //Search function - Eventlistner for button and enter
-
-import { searchMovies } from "./Modules/networks.js";
 
 // Debounce function
 function debounce(fn, delay) {

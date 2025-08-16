@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="./styles/styles.css">
+
     <title>Movie theater</title>
   </head>
   <body class="bg-black font-sans">
@@ -21,12 +23,6 @@
       <div
         class="flex items-center bg-white rounded-lg w-full max-w-[40rem] px-2 py-1 gap-2"
       >
-        <!-- <textarea
-          id="searchInput"
-          rows="1"
-          class="flex-1 resize-none overflow-hidden text-sm focus:outline-none leading-normal px-2 placeholder:text-gray-400 "
-          placeholder="Search Movie...">
-        </textarea> -->
         <input
           id="searchInput"
           type="search"
@@ -67,7 +63,7 @@
         </li>
         <li>
           <a
-            href="src/journal.html"
+            href="journal.html"
             class="inline-block text-white no-underline bg-transparent px-3 py-1 transition duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,3)]"
           >
             Journal

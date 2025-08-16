@@ -1,4 +1,4 @@
-import { getStoredMovies } from "../../modules/storage.js";
+import { getStoredMovies } from "./storage.js";
 
 const removeMovie = (param) => {
   const { id, title } = param;
