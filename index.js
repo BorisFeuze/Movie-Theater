@@ -1,18 +1,19 @@
 import { fetchMovies } from "./src/modules/networks.js";
-import { getStoredMovies } from "./src/modules/storage.js";
 import { renderMovieCard } from "./src/modules/homeUi.js";
 import { searchMovies } from "./src/modules/networks.js";
 
+// HTML-container where the movieCart will be display
 const movieCont = document.querySelector("#movie-container");
+
 // *   **Display Data**: Populate the DOM with the fetched movie data as styled cards. Show us the name, image and type. The grid is already set up in the HTML file.
-getStoredMovies();
 
 const fetchAndRendermovies = async () => {
+  // make sur that the Data from fetch don't have any Error. Through the try-catch function we will catch possible fetching _Error
   try {
     const { results } = await fetchMovies();
 
     const movies = { results };
-
+    // display popular movies
     movies.results?.forEach?.((movieObj) => {
       renderMovieCard(movieObj, movieCont);
     });
@@ -21,6 +22,7 @@ const fetchAndRendermovies = async () => {
   }
 };
 
+// Added the movieCart on the sreen
 fetchAndRendermovies();
 
 export { fetchAndRendermovies };
