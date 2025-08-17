@@ -1,5 +1,5 @@
 import { getStoredMovies } from "./storage.js";
-// added the new comment and save in locastorage
+// added the new comment and save in localstorage
 const extraInfoMovie = (info) => {
   // get the new state of the Data in localstorage
   const storedMovies = getStoredMovies();
