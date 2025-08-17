@@ -25,7 +25,8 @@ fetchAndRendermovies();
 
 export { fetchAndRendermovies };
 
-//Search function - Eventlistner for button and enter
+
+//Search function//
 
 // Debounce function
 function debounce(fn, delay) {
@@ -34,33 +35,42 @@ function debounce(fn, delay) {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => fn.apply(this, args), delay);
   };
-}
+};
 
+//Added the input-field
 const searchInput = document.querySelector("#searchInput");
 
+//function handleSearch, gets called evertime the user starts the search
 const handleSearch = async (event) => {
   const query = searchInput.value.trim();
 
+  //checking if the input-field is empty, if yes searchMovies will get removed - fetchAndRendermovies will get shown
   if (query === "") {
     removeMovies();
     fetchAndRendermovies();
     return;
-  }
+  };
 
+  //extern function to hand over the query to seachMovies
   const movies = await searchMovies(query);
 
+  //checking if the query is available, if not function gets stopped
   if (!movies?.results?.length) return;
 
+  //removing old movies to show just the current input 
   removeMovies();
+
+  //display new movies
   movies.results.forEach((movie) => {
     renderMovieCard(movie, movieCont);
   });
 };
 
-// Wrap handleSearch with debounce of 150ms
+// Wrap handleSearch with debounce of 300ms
 searchInput.addEventListener("input", debounce(handleSearch, 300));
 
+// removes ALL child elements
 function removeMovies() {
   const container = movieCont;
-  container.innerHTML = ""; // removes ALL child elements
+  container.innerHTML = ""; 
 }
