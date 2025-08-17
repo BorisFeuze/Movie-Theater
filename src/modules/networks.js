@@ -24,20 +24,24 @@ const fetchMovies = async (params) => {
 
 export { fetchMovies };
 
-//fetch for search function
+
+//fetch for search function//
 
 export const searchMovies = async (search) => {
 
+    //The url for search movies - (search) is the query of the input-field
     const url = `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`;
 
+    //secures the code, the errors are not crashing the whole website
     try {
 
       const response = await fetch(url, options);
       const data = await response.json();
 
-
+    //gives data back for using it in other function
     return data;
 
+    //error handling
     } catch (error) {
       console.error("Error", error)
       return [];

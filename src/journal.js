@@ -1,5 +1,5 @@
-import { getStoredMovies } from "../modules/storage.js";
-import { renderFavouriteMovieCard } from "./modules/ui.js";
+import { getStoredMovies } from "./modules/storage.js";
+import { renderFavouriteMovieCard } from "./modules/journalUi.js";
 
 const favouriteMovieCont = document.querySelector("#favourite-movie-container");
 
