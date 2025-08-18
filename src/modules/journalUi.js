@@ -42,10 +42,10 @@ const renderFavouriteMovieCard = (param, container) => {
   // attached the movie-info to movie-info container
   movieInfoDiv.appendChild(movieInfo);
 
-  
   // Container for comment-section
   const userComment = document.createElement("div");
-  userComment.className = "bg-white p-1 flex flex-col items-center h-full relative"; // <-- relative
+  userComment.className =
+    "bg-white p-1 flex flex-col items-center h-full relative"; // <-- relative
   const label = document.createElement("p");
   label.className = "text-sm mt-2 font-bold";
   userComment.appendChild(label);
@@ -76,65 +76,68 @@ const renderFavouriteMovieCard = (param, container) => {
       return;
     }
 
-  // Close all other popups
-  document.querySelectorAll(".comment-popup").forEach(p => p.remove());
+    // Close all other popups
+    document.querySelectorAll(".comment-popup").forEach((p) => p.remove());
 
-  // Create new popup 
-  const popup = document.createElement("div");
-  popup.className = "comment-popup flex flex-col bg-gray-100 p-2 rounded shadow w-64 absolute z-50";
+    // Create new popup
+    const popup = document.createElement("div");
+    popup.className =
+      "comment-popup flex flex-col bg-gray-100 p-2 rounded shadow w-64 absolute z-50";
 
-  // Positioning of the popup window
-  popup.style.top = "-205%"; 
-  popup.style.left = "50%";
-  popup.style.transform = "translateX(-50%)";
+    // Positioning of the popup window
+    popup.style.top = "-205%";
+    popup.style.left = "50%";
+    popup.style.transform = "translateX(-50%)";
 
-  // Input-field
-  const input = document.createElement("input");
-  input.className = "border bg-white-500 p-2 w-full rounded-sm mb-2";
-  input.type = "text";
-  input.placeholder = "Enter a comment";
+    // Input-field
+    const input = document.createElement("input");
+    input.className = "border bg-white-500 p-2 w-full rounded-sm mb-2";
+    input.type = "text";
+    input.placeholder = "Enter a comment";
 
-  // Comments that are saved
-  const storedComment = localStorage.getItem(`comment-${param.id}`);
-  if (storedComment) input.value = storedComment;
+    // Comments that are saved
+    const storedComment = localStorage.getItem(`comment-${param.id}`);
+    if (storedComment) input.value = storedComment;
 
-  // X-Button for deleating input
-  const clearBtn = document.createElement("button");
-  clearBtn.innerHTML = "&times;";
-  clearBtn.className = "absolute right-4 top-4 text-gray-500 hover:text-red-500";
-  clearBtn.addEventListener("click", () => {
-    input.value = "";
-    localStorage.removeItem(`comment-${param.id}`);
-    svgBtn.classList.remove("text-green-500");
-    svgBtn.classList.add("text-black");
+    // X-Button for deleating input
+    const clearBtn = document.createElement("button");
+    clearBtn.innerHTML = "&times;";
+    clearBtn.className =
+      "absolute right-4 top-4 text-gray-500 hover:text-red-500";
+    clearBtn.addEventListener("click", () => {
+      input.value = "";
+      localStorage.removeItem(`comment-${param.id}`);
+      svgBtn.classList.remove("text-green-500");
+      svgBtn.classList.add("text-black");
+    });
+
+    // Save-Button
+    const saveBtn = document.createElement("button");
+    saveBtn.textContent = "Save";
+    saveBtn.className =
+      "mb-2 px-2 pb-1 bg-black hover:bg-green-400 active:bg-green-300 text-white rounded";
+    saveBtn.addEventListener("click", () => {
+      const val = input.value.trim();
+      if (!val) {
+        alert("Cannot save an empty comment");
+        return;
+      }
+      //comment gets saved in localStorage -> color gets changed
+      localStorage.setItem(`comment-${param.id}`, val);
+      svgBtn.classList.remove("text-black");
+      svgBtn.classList.add("text-green-500");
+      input.value = "";
+      popup.remove();
+    });
+
+    //attached all elements to th comment-section container
+    popup.appendChild(clearBtn);
+    popup.appendChild(input);
+    popup.appendChild(saveBtn);
+    userComment.appendChild(popup);
   });
 
-  // Save-Button
-  const saveBtn = document.createElement("button");
-  saveBtn.textContent = "Save";
-  saveBtn.className = "mb-2 px-2 pb-1 bg-black hover:bg-green-400 active:bg-green-300 text-white rounded";
-  saveBtn.addEventListener("click", () => {
-    const val = input.value.trim();
-    if (!val) {
-      alert("Cannot save an empty comment");
-      return;
-    }
-    //comment gets saved in localStorage -> color gets changed
-    localStorage.setItem(`comment-${param.id}`, val);
-    svgBtn.classList.remove("text-black");
-    svgBtn.classList.add("text-green-500");
-    popup.remove();
-  });
-  
-  //attached all elements to th comment-section container
-  popup.appendChild(clearBtn);
-  popup.appendChild(input);
-  popup.appendChild(saveBtn);
-  userComment.appendChild(popup);
-  });
-
-movieCard.appendChild(userComment);
-
+  movieCard.appendChild(userComment);
 
   // created a delete button with all styles
   const deleteBtn = document.createElement("button");
