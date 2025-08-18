@@ -1,11 +1,11 @@
 # Node modules
-node_modules
+node_modules/
 
 # Parcel cache
-.parcel-cache
+.parcel-cache/
 
 # Build output
-dist
+dist/
 
 # OS-specific files
 .DS_Store

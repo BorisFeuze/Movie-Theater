@@ -1,18 +1,19 @@
-import { fetchMovies } from "./modules/networks.js";
-import { getStoredMovies } from "./modules/storage.js";
-import { renderMovieCard } from "./modules/homeUi.js";
-import { searchMovies } from "./modules/networks.js";
+import { fetchMovies } from "./src/modules/networks.js";
+import { renderMovieCard } from "./src/modules/homeUi.js";
+import { searchMovies } from "./src/modules/networks.js";
 
+// HTML-container where the movieCart will be display
 const movieCont = document.querySelector("#movie-container");
+
 // *   **Display Data**: Populate the DOM with the fetched movie data as styled cards. Show us the name, image and type. The grid is already set up in the HTML file.
-getStoredMovies();
 
 const fetchAndRendermovies = async () => {
+  // make sur that the Data from fetch don't have any Error. Through the try-catch function we will catch possible fetching _Error
   try {
     const { results } = await fetchMovies();
 
     const movies = { results };
-
+    // display popular movies
     movies.results?.forEach?.((movieObj) => {
       renderMovieCard(movieObj, movieCont);
     });
@@ -21,10 +22,10 @@ const fetchAndRendermovies = async () => {
   }
 };
 
+// Added the movieCart on the sreen
 fetchAndRendermovies();
 
 export { fetchAndRendermovies };
-
 
 //Search function//
 
@@ -35,7 +36,7 @@ function debounce(fn, delay) {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => fn.apply(this, args), delay);
   };
-};
+}
 
 //Added the input-field
 const searchInput = document.querySelector("#searchInput");
@@ -49,7 +50,7 @@ const handleSearch = async (event) => {
     removeMovies();
     fetchAndRendermovies();
     return;
-  };
+  }
 
   //extern function to hand over the query to seachMovies
   const movies = await searchMovies(query);
@@ -57,7 +58,7 @@ const handleSearch = async (event) => {
   //checking if the query is available, if not function gets stopped
   if (!movies?.results?.length) return;
 
-  //removing old movies to show just the current input 
+  //removing old movies to show just the current input
   removeMovies();
 
   //display new movies
@@ -72,5 +73,5 @@ searchInput.addEventListener("input", debounce(handleSearch, 300));
 // removes ALL child elements
 function removeMovies() {
   const container = movieCont;
-  container.innerHTML = ""; 
+  container.innerHTML = "";
 }
