@@ -33,9 +33,40 @@ const renderMovieCard = (param, container) => {
   // attached the title-element to movie-info container
   movieInfoDiv.appendChild(movieName);
 
+  const spanInfoElt1 = document.createElement("span");
+  spanInfoElt1.setAttribute("id", "text-short");
+  spanInfoElt1.textContent = param.overview.length
+    ? param.overview.slice(0, 100) + "..."
+    : param.overview;
+
+  const spanInfoElt2 = document.createElement("span");
+  spanInfoElt2.className = "hidden";
+  spanInfoElt2.setAttribute("id", "text-full");
+  spanInfoElt2.textContent = param.overview;
+
+  const toggleButton = document.createElement("button");
+  toggleButton.setAttribute("id", "toggle-btn");
+  toggleButton.className = "text-red-400 underline ml-1";
+  toggleButton.textContent = "Read more";
+  toggleButton.addEventListener("click", () => {
+    const toggleBtn = movieElement.querySelector("#toggle-btn");
+    const shortText = movieElement.querySelector("#text-short");
+    const fullText = movieElement.querySelector("#text-full");
+
+    if (fullText.classList.contains("hidden")) {
+      shortText.classList.add("hidden");
+      fullText.classList.remove("hidden");
+      toggleBtn.textContent = "Read less";
+    } else {
+      shortText.classList.remove("hidden");
+      fullText.classList.add("hidden");
+      toggleBtn.textContent = "Read more";
+    }
+  });
+
   // created a movie-info elements with all styles
   const movieInfo = document.createElement("p");
-  movieInfo.textContent = `ID: ${param.id} | Release date: ${param.release_date}`; // we are displaying the Id and the release date of the movie as Info
+  movieInfo.textContent = `Overview: ${spanInfoElt1.textContent} ${spanInfoElt2.textContent} | Release date: ${param.release_date}`; // we are displaying the Id and the release date of the movie as Info
   movieInfo.className = "text-gray-600";
   // attached the movie-info to movie-info container
   movieInfoDiv.appendChild(movieInfo);
