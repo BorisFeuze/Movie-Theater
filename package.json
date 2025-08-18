@@ -2,9 +2,13 @@
   "name": "movie-theater-part-2",
   "version": "1.0.0",
   "description": "",
+  "source": [
+    "index.html",
+    "./src/journal.html"
+  ],
   "scripts": {
-    "dev": "parcel index.html src/journal.html",
-    "build": "parcel build index.html src/journal.html"
+    "dev": "parcel",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
