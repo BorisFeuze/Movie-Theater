@@ -83,7 +83,7 @@ const renderMovieCard = (param, container) => {
   const addFavoriteBtn = document.createElement("button");
   addFavoriteBtn.textContent = "Add to Favourites";
   addFavoriteBtn.className =
-    "px-3 py-2 bg-green-500 hover:bg-green-400 active:bg-green-300 text-white rounded mt-auto cursor-pointer";
+    "px-4 py-2 bg-green-500 hover:bg-green-400 active:bg-green-300 text-white rounded mt-auto cursor-pointer";
   // added eventlistener to add the data of selected movie in localstorage
   addFavoriteBtn.addEventListener("click", () => {
     addMovie(param);
